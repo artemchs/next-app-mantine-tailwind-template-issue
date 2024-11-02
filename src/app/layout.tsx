@@ -9,6 +9,7 @@ import {
 import localFont from "next/font/local";
 import Head from "next/head";
 import "./globals.css";
+import themeConfig from "./theme";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -26,13 +27,13 @@ export const metadata: Metadata = {
   description: "Next App Mantine Tailwind Template",
 };
 
-const theme = mergeMantineTheme(
-  DEFAULT_THEME,
-  createTheme({
-    fontFamily: geistSans.style.fontFamily,
-    fontFamilyMonospace: geistMono.style.fontFamily,
-  }),
-);
+// const theme = mergeMantineTheme(
+//   DEFAULT_THEME,
+//   createTheme({
+//     fontFamily: geistSans.style.fontFamily,
+//     fontFamilyMonospace: geistMono.style.fontFamily,
+//   }),
+// );
 
 export default function RootLayout({
   children,
@@ -45,7 +46,8 @@ export default function RootLayout({
         <ColorSchemeScript />
       </Head>
       <body className="antialiased">
-        <MantineProvider theme={theme}>{children}</MantineProvider>
+        {/* Typescript error: */}
+        <MantineProvider theme={themeConfig}>{children}</MantineProvider>
       </body>
     </html>
   );
